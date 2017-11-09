@@ -7,7 +7,7 @@ target 'MVVMCoordinatorDemo' do
 
   # Pods for MVVMCoordinatorDemo
 
-  pod 'ReactiveCocoa', '~> 6.0'
+  pod 'ReactiveCocoa', '~> 7.0.0-rc.1'
   pod 'SnapKit', '~> 4.0.0'
 
 end
