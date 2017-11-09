@@ -9,9 +9,13 @@
 import Foundation
 
 protocol EntryViewModel {
-    
+    func onFetchUser()
 }
 
 class EntryDefaultViewModel: EntryViewModel {
+    
+    func onFetchUser() {
+        print("Test")
+    }
     
 }
