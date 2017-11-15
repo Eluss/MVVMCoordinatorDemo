@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import ReactiveCocoa
+import ReactiveSwift
 
 class EntryViewController: UIViewController {
 
@@ -15,11 +17,16 @@ class EntryViewController: UIViewController {
     
     private lazy var fetchUserButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Open user screen", for: .normal)
+        button.setTitle("Fetch user", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.white, for: .highlighted)
         button.addTarget(self, action: #selector(onFetchUserButtonTapped), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var currentUserLabel: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
     init(viewModel: EntryViewModel) {
@@ -33,20 +40,36 @@ class EntryViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        setupObservers()
         setupView()
     }
     
-    @objc func onFetchUserButtonTapped() {
-        viewModel.onFetchUser()
+    private func setupObservers() {
+        currentUserLabel.reactive.text <~ self.viewModel.userName
     }
     
+    @objc func onFetchUserButtonTapped() {
+        viewModel.fetchUser()
+    }
+
     private func setupView() {
         view.backgroundColor = .red
         
         view.addSubview(fetchUserButton)
+        view.addSubview(saveUserButton)
+        view.addSubview(currentUserLabel)
+        
         fetchUserButton.snp.makeConstraints { (make) in
             make.center.equalTo(self.view.center)
-            make.width.height.equalTo(200)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
+        
+        currentUserLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.fetchUserButton.snp.top).inset(20)
+            make.centerX.equalTo(self.view)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
         }
     }
     

@@ -18,7 +18,8 @@ class MainFlowController {
     }
     
     func startFlow() {
-        let viewModel = EntryDefaultViewModel()
+        let fetcher = FakeUserFetcher()
+        let viewModel = EntryDefaultViewModel(userFetcher: fetcher)
         let entry = EntryViewController(viewModel: viewModel)
         rootNavigationController.pushViewController(entry, animated: true)
     }

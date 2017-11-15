@@ -14,6 +14,8 @@
 		483E35E11FB44A9C00B5ED58 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483E35E01FB44A9C00B5ED58 /* MainFlowController.swift */; };
 		483E35E41FB44AEE00B5ED58 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483E35E31FB44AEE00B5ED58 /* EntryViewController.swift */; };
 		483E35E61FB44AF800B5ED58 /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483E35E51FB44AF800B5ED58 /* EntryViewModel.swift */; };
+		72AFDC721FBC128D00951B12 /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AFDC711FBC128D00951B12 /* UserFetcher.swift */; };
+		72AFDC741FBC12BB00951B12 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AFDC731FBC12BB00951B12 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		483E35E01FB44A9C00B5ED58 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
 		483E35E31FB44AEE00B5ED58 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		483E35E51FB44AF800B5ED58 /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
+		72AFDC711FBC128D00951B12 /* UserFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
+		72AFDC731FBC12BB00951B12 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		87BDD0743304FA1B1E9FBC08 /* Pods_MVVMCoordinatorDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMCoordinatorDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D4593A1EC2A62AA2523CA6 /* Pods-MVVMCoordinatorDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMCoordinatorDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMCoordinatorDemo/Pods-MVVMCoordinatorDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E1CC4C3B5A1E819AA1CB43C9 /* Pods-MVVMCoordinatorDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMCoordinatorDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMCoordinatorDemo/Pods-MVVMCoordinatorDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 			children = (
 				483E35E31FB44AEE00B5ED58 /* EntryViewController.swift */,
 				483E35E51FB44AF800B5ED58 /* EntryViewModel.swift */,
+				72AFDC711FBC128D00951B12 /* UserFetcher.swift */,
+				72AFDC731FBC12BB00951B12 /* User.swift */,
 			);
 			path = EntryViewController;
 			sourceTree = "<group>";
@@ -235,7 +241,9 @@
 			files = (
 				483E35E11FB44A9C00B5ED58 /* MainFlowController.swift in Sources */,
 				483E35E61FB44AF800B5ED58 /* EntryViewModel.swift in Sources */,
+				72AFDC741FBC12BB00951B12 /* User.swift in Sources */,
 				480CB5451FB4494D00FADCBA /* AppDelegate.swift in Sources */,
+				72AFDC721FBC128D00951B12 /* UserFetcher.swift in Sources */,
 				483E35E41FB44AEE00B5ED58 /* EntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

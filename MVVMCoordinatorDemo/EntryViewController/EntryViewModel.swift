@@ -7,15 +7,37 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 protocol EntryViewModel {
-    func onFetchUser()
+    func fetchUser()    
+    
+    var userName: Property<String> {get}
 }
 
 class EntryDefaultViewModel: EntryViewModel {
     
-    func onFetchUser() {
-        print("Test")
+    private let userFetcher: UserFetcher
+    private var mutableUserName = MutableProperty("")
+    lazy var userName: Property<String> = Property(self.mutableUserName)
+    
+    init(userFetcher: UserFetcher) {
+        self.userFetcher = userFetcher
+    }
+    
+    func fetchUser() { // why don't I return user Signal Producer here?
+        mutableUserName.value = "Loading user..."
+        userFetcher.fetchUser().startWithResult {[weak self] (result) in
+            guard let strongSelf = self else {
+                return
+            }
+            switch result {
+            case .success(let user):
+                strongSelf.mutableUserName.value = user.name
+            case .failure(_):
+                strongSelf.mutableUserName.value = "Failed to fetch user"
+            }
+        }
     }
     
 }
