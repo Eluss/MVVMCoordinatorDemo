@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import enum Result.NoError
 
 protocol EntryViewModel {
     func fetchUser()    
@@ -27,17 +28,7 @@ class EntryDefaultViewModel: EntryViewModel {
     
     func fetchUser() { // why don't I return user Signal Producer here?
         mutableUserName.value = "Loading user..."
-        userFetcher.fetchUser().startWithResult {[weak self] (result) in
-            guard let strongSelf = self else {
-                return
-            }
-            switch result {
-            case .success(let user):
-                strongSelf.mutableUserName.value = user.name
-            case .failure(_):
-                strongSelf.mutableUserName.value = "Failed to fetch user"
-            }
-        }
+        mutableUserName <~ userFetcher.fetchUser().map { $0.name }
     }
     
 }

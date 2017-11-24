@@ -14,6 +14,7 @@ import ReactiveSwift
 class EntryViewController: UIViewController {
 
     private let viewModel: EntryViewModel
+    let mutable = MutableProperty<String>("")
     
     private lazy var fetchUserButton: UIButton = {
         let button = UIButton()
@@ -45,7 +46,9 @@ class EntryViewController: UIViewController {
     }
     
     private func setupObservers() {
-        currentUserLabel.reactive.text <~ self.viewModel.userName
+
+        mutable.bindingTarget <~ self.viewModel.userName.producer
+        currentUserLabel.reactive.text <~ self.viewModel.userName.producer
     }
     
     @objc func onFetchUserButtonTapped() {
@@ -56,7 +59,6 @@ class EntryViewController: UIViewController {
         view.backgroundColor = .red
         
         view.addSubview(fetchUserButton)
-        view.addSubview(saveUserButton)
         view.addSubview(currentUserLabel)
         
         fetchUserButton.snp.makeConstraints { (make) in

@@ -8,18 +8,19 @@
 
 import Foundation
 import ReactiveSwift
+import enum Result.NoError
 
 enum UserFetcherError: Error {
     case NoExistingUser
 }
 
 protocol UserFetcher {
-    func fetchUser() -> SignalProducer<User, UserFetcherError>
+    func fetchUser() -> SignalProducer<User, NoError>
 }
 
 class FakeUserFetcher: UserFetcher {
     
-    func fetchUser() -> SignalProducer<User, UserFetcherError> {
+    func fetchUser() -> SignalProducer<User, NoError> {
         return SignalProducer { observer, _ in
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1, execute: {
                 let user = User(name: "Tester")
